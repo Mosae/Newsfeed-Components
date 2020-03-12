@@ -113,7 +113,7 @@ const data = [{
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
-function setUp(title, date, first, second, third) {
+function createArticle(title, date, first, second, third) {
   //define new elements
   const panel = document.createElement('div');
   const panelTitle = document.createElement('h2');
@@ -149,6 +149,7 @@ function setUp(title, date, first, second, third) {
   panel.textContent = third;
   panelSpan.textContent = 'expand';
 
+
   //add event listener
 
   panelSpan.addEventListener('click', (event) => {
@@ -156,13 +157,23 @@ function setUp(title, date, first, second, third) {
 
   })
 
-
+  console.log(panel)
   return panel
 
 }
 
-// let articles = document.querySelectorAll(".article");
-// articles.forEach(article => {
-//   return new Article(article);
-// })
-// console.log(articles);
+
+//grab parent
+
+let articles = document.querySelector('.articles');
+articles.append(createArticle());
+
+
+data.map(item => {
+
+  console.log(item)
+  let newArticle = articles.append(createArticle(data.title));
+
+
+  return newArticle;
+});
