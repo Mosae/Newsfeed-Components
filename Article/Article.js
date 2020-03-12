@@ -1,7 +1,6 @@
 /* This is the data we will be using to create our article components */
 /* Look over this data, then proceed to line 91*/
-const data = [
-  {
+const data = [{
     title: 'Lambda School Students: "We\'re the best!"',
     date: 'Nov 5th, 2018',
     firstParagraph: `Lucas ipsum dolor sit amet ben twi'lek padmé darth darth darth moff hutt organa twi'lek. Ben amidala secura skywalker lando
@@ -90,6 +89,8 @@ const data = [
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
+
+
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
@@ -112,3 +113,56 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+function setUp(title, date, first, second, third) {
+  //define new elements
+  const panel = document.createElement('div');
+  const panelTitle = document.createElement('h2');
+  const panelDate = document.createElement('p');
+  const panelSpan = document.createElement('span'),
+    panelFirst = document.createElement('p'),
+    panelSecond = document.createElement('p'),
+    panelThird = document.createElement('p');
+
+  // const buttonOpen = document.createElement('button');
+  // const buttonClose = document.createElement('button');
+
+  //structure of the elements
+  panel.append(panelTitle);
+  panel.append(panelDate);
+  panel.append(panelFirst);
+  panel.append(panelSecond);
+  panel.append(panelThird);
+  panel.append(panelSpan);
+  // panel.append(panelTitle, panelDate, buttonOpen, buttonClose);
+
+  //add classes to elements
+  panel.classList.add('article');
+  panelDate.classList.add('date');
+  panelSpan.classList.add('expandButton');
+
+  //set the text content
+
+  panelTitle.textContent = title;
+  panelDate.textContent = date;
+  panel.textContent = first;
+  panel.textContent = second;
+  panel.textContent = third;
+  panelSpan.textContent = 'expand';
+
+  //add event listener
+
+  panelSpan.addEventListener('click', (event) => {
+    panelSpan.classList.toggle('article-on');
+
+  })
+
+
+  return panel
+
+}
+
+// let articles = document.querySelectorAll(".article");
+// articles.forEach(article => {
+//   return new Article(article);
+// })
+// console.log(articles);
