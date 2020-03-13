@@ -117,7 +117,7 @@ const data = [
 const showArticles = document.querySelector(".articles");
 
 function createArticle(title, date, first, second, third) {
-  //define new elements
+  //define new elements - As seen on the structure provided above.
   const panel = document.createElement("div");
   const panelTitle = document.createElement("h2");
   const panelDate = document.createElement("p");
@@ -126,20 +126,7 @@ function createArticle(title, date, first, second, third) {
   const panelThird = document.createElement("p");
   const panelSpan = document.createElement("span");
 
-  panel.classList.add("article");
-  panelDate.classList.add("date");
-  panelSpan.classList.add("expandButton");
-
-  // const buttonOpen = document.createElement('button');
-  // const buttonClose = document.createElement('button');
-  panelTitle.textContent = title;
-  panelDate.textContent = date;
-  panelFirst.textContent = first;
-  panelSecond.textContent = second;
-  panelThird.textContent = third;
-  panelSpan.textContent = "expand button";
-
-  //structure of the elements
+  //structure of the elements - Append to the div
   panel.append(panelTitle);
   panel.append(panelDate);
   panel.append(panelFirst);
@@ -147,13 +134,20 @@ function createArticle(title, date, first, second, third) {
   panel.append(panelThird);
   panel.append(panelSpan);
 
-  // panel.append(panelTitle, panelDate, buttonOpen, buttonClose);
-
   //add classes to elements
+  panel.classList.add("article");
+  panelDate.classList.add("date");
+  panelSpan.classList.add("expandButton");
 
-  //set the text content
+  //set the text content - make sure to assign them properly
+  panelTitle.textContent = title;
+  panelDate.textContent = date;
+  panelFirst.textContent = first;
+  panelSecond.textContent = second;
+  panelThird.textContent = third;
+  panelSpan.textContent = "expand button";
 
-  //add event listener
+  //add event listener on button to open and close the panel div
 
   panelSpan.addEventListener("click", event => {
     panel.classList.toggle("article-open");
@@ -166,8 +160,8 @@ function createArticle(title, date, first, second, third) {
 
 // articles.append(createArticle());
 
+//Loop through the data object and append to the parent div
 data.forEach(item => {
-  console.log(item);
   showArticles.appendChild(
     createArticle(
       item.title,
